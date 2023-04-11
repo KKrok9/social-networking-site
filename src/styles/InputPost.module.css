@@ -1,0 +1,14 @@
+.input-posts {
+  width: 50%;
+  height: 50%;
+  text-align: top;
+  font-family: var(--font-family);
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+  border-radius: 12px;
+  border: none;
+  padding: 1%;
+}
+.input-posts:focus {
+  outline: none;
+}
