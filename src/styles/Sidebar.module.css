@@ -24,18 +24,3 @@
   justify-content: center;
   align-items: center;
 }
-
-.sidebar-btn {
-  width: 80%;
-  height: 8%;
-  margin: auto;
-  color: #4b4453;
-  background-color: var(--main-blue);
-  display: flex;
-  justify-content: space-between;
-}
-
-.sidebar-btn:hover {
-  color: white;
-  background-color: var(--lighter-blue);
-}
