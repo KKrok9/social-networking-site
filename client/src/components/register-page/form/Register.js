@@ -30,7 +30,7 @@ const Register = () => {
   const [isSubmit, setIsSubmit] = useState(false);
   const [isValid, setIsValid] = useState(false);
   const [clickCounter, setClickCounter] = useState(0);
-  const handleReset = () => {
+  const handleResetInputs = () => {
     setFormData({
       name: "",
       surname: "",
@@ -39,17 +39,6 @@ const Register = () => {
       password: "",
       repeatedPassword: "",
     });
-    setErrValue({
-      nameErr: "",
-      surnameErr: "",
-      birthdayDateErr: "",
-      emailErr: "",
-      passwordErr: "",
-      repeatedPasswordErr: "",
-    });
-    setIsSubmit(false);
-    setIsValid(false);
-    setClickCounter(0);
   };
 
   const ValidationCheck = useCallback(() => {
@@ -78,7 +67,7 @@ const Register = () => {
           : true
       );
     }
-  }, [formData, clickCounter]);
+  }, [clickCounter]);
 
   const errorCheck = useCallback(() => {
     if (
@@ -95,7 +84,7 @@ const Register = () => {
       console.log("setIsValid - false");
       setIsValid(false);
     }
-  }, [clickCounter]);
+  }, [formErrors]);
 
   useEffect(() => {
     ValidationCheck();
@@ -122,9 +111,9 @@ const Register = () => {
 
   useEffect(() => {
     async function registerUser() {
-      if (isValid === true && isSubmit) {
-        console.log("valided", isValid);
-        console.log("submited", isSubmit);
+      if (isValid === true && isSubmit === true) {
+        console.log("valided - cool", isValid);
+        console.log("submited - cool", isSubmit);
         const response = await fetch("http://localhost:5000/api/register", {
           method: "POST",
           headers: {
@@ -135,20 +124,21 @@ const Register = () => {
 
         const data = await response.json();
         console.log(data);
-        handleReset();
+        handleResetInputs();
         return;
       } else {
-        console.log("tried to send - failed");
+        ValidationCheck();
+        console.log("tried to valid and submit - failed");
         return;
       }
     }
     registerUser();
-  }, [isValid,isSubmit]);
+  }, [isValid]);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setClickCounter(clickCounter + 1);
     setIsSubmit(true);
+    setClickCounter(clickCounter + 1);
   }
 
   return (

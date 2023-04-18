@@ -45,7 +45,7 @@
 
 .register-label {
   font-weight: bold;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.1rem;
   font-family: var(--font-family);
   color: black;
 }
@@ -88,7 +88,7 @@
   padding: 5%;
   background-color: var(--lighter-blue);
   font-weight: bold;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.1rem;
   font-family: var(--font-family);
   color: black;
   border: none;
