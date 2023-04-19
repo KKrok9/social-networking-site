@@ -23,12 +23,13 @@ app.post("/api/register", async (req, res) => {
       email: req.body.email,
       password: req.body.password,
     });
-    console.log("sended");
     res.json({ status: "ok" });
   } catch (err) {
-    res.json({ status: "error", error: "didnt send" });
+    res.json({ status: 400, error: "didnt send" });
   }
 });
+
+app.post("/api/login", async (req, res) => {});
 
 app.listen(5000, () => {
   console.log("server started at port 5000!");
