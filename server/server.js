@@ -23,13 +23,28 @@ app.post("/api/register", async (req, res) => {
       email: req.body.email,
       password: req.body.password,
     });
-    res.json({ status: "ok" });
+    res.json({ status: 200 });
   } catch (err) {
-    res.json({ status: 400, error: "didnt send" });
+    res.json({ status: 409, error: "Email is already taken!" });
   }
 });
 
-app.post("/api/login", async (req, res) => {});
+app.post("/api/login", async (req, res) => {
+  const user = await User.findOne({
+    email: req.body.email,
+    password: req.body.password,
+  });
+
+  // have to add JWT and bcrypt
+
+  if (user) {
+    res.json({ status: 200, user: true });
+  }
+
+  if (!user) {
+    res.json({ status: 404, user: false, error: "Didn't find matching user" });
+  }
+});
 
 app.listen(5000, () => {
   console.log("server started at port 5000!");

@@ -17,8 +17,6 @@ const Login = (props) => {
   const [isFormSubmit, setIsFormSubmit] = useState("");
   const [clickCounter, setClickCounter] = useState(0);
 
-  
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setLoginData((prevState) => ({
