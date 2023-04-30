@@ -13,9 +13,24 @@ const Login = (props) => {
     emailErr: "",
     passwordErr: "",
   });
+
+  function setErrValue(fieldName, value) {
+    setLoginErrs((prevState) => ({
+      ...prevState,
+      [fieldName]: value,
+    }));
+  }
+
   const [isFormValid, setIsFormValid] = useState("");
   const [isFormSubmit, setIsFormSubmit] = useState("");
   const [clickCounter, setClickCounter] = useState(0);
+
+  const handleResetInputs = () => {
+    setLoginData({
+      emailValue: "",
+      passwordValue: "",
+    });
+  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -25,15 +40,47 @@ const Login = (props) => {
     }));
   };
 
+  const ValidationCheck = useCallback(() => {
+    if (clickCounter > 0) {
+      setErrValue("emailErr", CheckEmail(loginData.emailValue) ? false : true);
+      setErrValue(
+        "passwordErr",
+        CheckPasswordLength(loginData.passwordValue) ? false : true
+      );
+    }
+  }, [clickCounter]);
+
   useEffect(() => {
-    console.log(loginData);
-  }, [loginData]);
+    ValidationCheck();
+  }, [ValidationCheck]);
+
+  const errorCheck = useCallback(() => {
+    if (loginErrs.emailErr === false && loginErrs.passwordErr === false) {
+      setIsFormValid(true);
+    }
+  }, [loginErrs]);
+
+  useEffect(() => {
+    errorCheck();
+  }, [errorCheck]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsFormSubmit(true);
     setClickCounter(clickCounter + 1);
   };
+
+  useEffect(() => {
+    async function loginUser() {
+      if (isFormSubmit && isFormValid) {
+        console.log("valided - cool", isFormValid);
+        console.log("submited - cool", isFormSubmit);
+      } else {
+        console.log("tried but not");
+      }
+    }
+    loginUser();
+  }, [isFormValid]);
 
   return (
     <div className={styles["login-form__div"]}>
@@ -47,7 +94,8 @@ const Login = (props) => {
             E-mail
           </label>
           <input
-            className={styles["login-form__element-input"]}
+            className={`${styles["login-form__element-input"]}
+            ${loginErrs.emailErr ? styles.inputBlur : ""}`}
             id="email-input"
             value={loginData.emailValue}
             name="emailValue"
@@ -62,7 +110,9 @@ const Login = (props) => {
             Password
           </label>
           <input
-            className={styles["login-form__element-input"]}
+            className={`${styles["login-form__element-input"]}
+            ${loginErrs.passwordErr ? styles.inputBlur : ""}
+            `}
             htmlFor="password-input"
             value={loginData.passwordValue}
             name="passwordValue"
