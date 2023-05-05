@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../../../styles/Login.module.css";
 import { useState, useCallback, useEffect } from "react";
 import { CheckEmail, CheckPasswordLength } from "../../../utils/validation";
+import { Link } from "react-router-dom";
 
 const Login = (props) => {
   const [loginData, setLoginData] = useState({
@@ -24,13 +25,6 @@ const Login = (props) => {
   const [isFormValid, setIsFormValid] = useState("");
   const [isFormSubmit, setIsFormSubmit] = useState("");
   const [clickCounter, setClickCounter] = useState(0);
-
-  const handleResetInputs = () => {
-    setLoginData({
-      emailValue: "",
-      passwordValue: "",
-    });
-  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -57,6 +51,8 @@ const Login = (props) => {
   const errorCheck = useCallback(() => {
     if (loginErrs.emailErr === false && loginErrs.passwordErr === false) {
       setIsFormValid(true);
+    } else {
+      setIsFormValid(false);
     }
   }, [loginErrs]);
 
@@ -75,12 +71,25 @@ const Login = (props) => {
       if (isFormSubmit && isFormValid) {
         console.log("valided - cool", isFormValid);
         console.log("submited - cool", isFormSubmit);
+        const response = await fetch("http://localhost:5000/api/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(loginData),
+        });
+
+        const data = await response.json();
+        console.log(data);
+        if (data.status === 404) {
+          console.log("didnt find");
+        }
       } else {
         console.log("tried but not");
       }
     }
     loginUser();
-  }, [isFormValid]);
+  }, [isFormValid, clickCounter]);
 
   return (
     <div className={styles["login-form__div"]}>
@@ -123,7 +132,10 @@ const Login = (props) => {
         <button className={styles["login-form__btn"]}>Login</button>
       </form>
       <p>
-        Don't have an account? <a>Sign up!</a>{" "}
+        Don't have an account?{" "}
+        <Link to="/register" className={styles["sign-up--link"]}>
+          Sign up!
+        </Link>{" "}
       </p>
     </div>
   );

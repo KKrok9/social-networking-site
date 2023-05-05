@@ -31,17 +31,15 @@ app.post("/api/register", async (req, res) => {
 
 app.post("/api/login", async (req, res) => {
   const user = await User.findOne({
-    email: req.body.email,
-    password: req.body.password,
+    email: req.body.emailValue,
+    password: req.body.passwordValue,
   });
 
   // have to add JWT and bcrypt
 
   if (user) {
     res.json({ status: 200, user: true });
-  }
-
-  if (!user) {
+  } else {
     res.json({ status: 404, user: false, error: "Didn't find matching user" });
   }
 });

@@ -64,3 +64,12 @@
 .inputBlur {
   border: 2px solid red;
 }
+
+.sign-up--link {
+  color: #0063ff;
+  text-decoration: underline;
+}
+
+.sign-up--link:hover {
+  color: #00a1ff;
+}

@@ -7,6 +7,7 @@ import {
   CheckIfUserAdult,
   CheckIfIsntEmpty,
 } from "../../../utils/validation";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -126,10 +127,6 @@ const Register = () => {
         console.log(data);
         handleResetInputs();
         return;
-      } else {
-        ValidationCheck();
-        console.log("tried to valid and submit - failed");
-        return;
       }
     }
     registerUser();
@@ -223,7 +220,12 @@ const Register = () => {
             ></input>
           </div>
           <div className={styles["register-buttons"]}>
-            <button className={styles["back-btn"]}>&#8592;</button>
+            <button className={styles["back-btn"]} type="button">
+              <Link to="/" className={styles.link}>
+                {" "}
+                <span>&#8592;</span>BACK
+              </Link>
+            </button>
             <button className={styles["register-btn"]} type="submit">
               REGISTER
             </button>

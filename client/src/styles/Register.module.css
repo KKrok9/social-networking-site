@@ -103,6 +103,12 @@
 }
 
 .inputBlur {
-  border:2px solid red
+  border: 2px solid red;
+}
 
+.link {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
 }
