@@ -3,6 +3,8 @@ const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 const User = require("./models/user.model");
+const Post = require("./models/post.model");
+
 app.use(cors());
 app.use(express.json());
 
@@ -43,6 +45,10 @@ app.post("/api/login", async (req, res) => {
     res.json({ status: 404, user: false, error: "Didn't find matching user" });
   }
 });
+
+//need to add endpoint for adding posts
+
+//need to add endpoint for getting all posts
 
 app.listen(5000, () => {
   console.log("server started at port 5000!");
