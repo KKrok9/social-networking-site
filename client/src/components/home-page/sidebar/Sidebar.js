@@ -14,16 +14,16 @@ const buttonStyles = {
   backgroundColor: "var(--main-blue)",
   display: "flex",
   justifyContent: "space-between",
-  boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.2)',
-  transition: 'transform 0.25s ease-out',
+  boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.2)",
+  transition: "transform 0.25s ease-out",
   ":hover": {
     color: "white",
     backgroundColor: "var(--lighter-blue)",
-    transform: 'translateY(-2px)',
+    transform: "translateY(-2px)",
   },
 };
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   return (
     <div className={styles["sidebar-container"]}>
       <div className={styles["sidebar-head--section"]}>
@@ -39,11 +39,7 @@ const Sidebar = () => {
         >
           YOUR PROFILE
         </Button>
-        <Button
-          variant="contained"
-          sx={buttonStyles}
-          endIcon={<ForumIcon />}
-        >
+        <Button variant="contained" sx={buttonStyles} endIcon={<ForumIcon />}>
           MESSAGES
         </Button>
         <Button
@@ -57,6 +53,7 @@ const Sidebar = () => {
           variant="contained"
           sx={buttonStyles}
           endIcon={<LogoutIcon />}
+          onClick={() => props.toggleIsLoggedIn(false)}
         >
           LOGOUT
         </Button>

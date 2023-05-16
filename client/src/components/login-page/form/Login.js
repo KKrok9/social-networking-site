@@ -84,6 +84,10 @@ const Login = (props) => {
         if (data.status === 404) {
           console.log("didnt find");
         }
+        if(data.status === 200){
+          props.toggleIsLoggedIn(true);
+          console.log(props);
+        }
       } else {
         console.log("tried but not");
       }
