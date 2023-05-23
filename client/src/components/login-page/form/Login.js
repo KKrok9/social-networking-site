@@ -71,7 +71,7 @@ const Login = (props) => {
       if (isFormSubmit && isFormValid) {
         console.log("valided - cool", isFormValid);
         console.log("submited - cool", isFormSubmit);
-        const response = await fetch("http://localhost:5000/api/login", {
+        const response = await fetch("http://localhost:5000/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -115,7 +115,7 @@ const Register = () => {
       if (isValid === true && isSubmit === true) {
         console.log("valided - cool", isValid);
         console.log("submited - cool", isSubmit);
-        const response = await fetch("http://localhost:5000/api/register", {
+        const response = await fetch("http://localhost:5000/register", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
