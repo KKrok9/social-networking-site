@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Post = new mongoose.Schema(
   {
     content: { type: String, required: true },
-    likesCounter: { type: Number, required: true },
+    likedBy: { type: String, required: true },
     dateOfAddition: { type: Date, required: true },
     author: { type: String, required: true },
   },
