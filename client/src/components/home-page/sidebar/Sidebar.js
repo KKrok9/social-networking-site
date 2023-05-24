@@ -22,14 +22,24 @@ const buttonStyles = {
     transform: "translateY(-2px)",
   },
 };
+const currentDate = new Date();
+
+const day = String(currentDate.getDate()).padStart(2, "0");
+const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+const year = String(currentDate.getFullYear()).slice(-2);
+
+const formattedDate = `${day}/${month}/${year}`;
 
 const Sidebar = (props) => {
+  const { name, surname } = props.userData;
   return (
     <div className={styles["sidebar-container"]}>
       <div className={styles["sidebar-head--section"]}>
         <p className={styles["sidebar-header"]}>SeeYaSoon</p>
-        <p className={styles["sidebar-profile--info"]}>Kacper Krok</p>
-        <p className={styles["sidebar-date"]}>04/04/2023</p>
+        <p className={styles["sidebar-profile--info"]}>
+          {name} {surname}
+        </p>
+        <p className={styles["sidebar-date"]}>{formattedDate}</p>
       </div>
       <div className={styles["sidebar-btns--section"]}>
         <Button

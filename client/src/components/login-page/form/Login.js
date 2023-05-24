@@ -80,13 +80,13 @@ const Login = (props) => {
         });
 
         const data = await response.json();
-        console.log(data);
         if (data.status === 404) {
           console.log("didnt find");
         }
-        if(data.status === 200){
+        if (data.status === 200) {
           props.toggleIsLoggedIn(true);
-          console.log(props);
+          sessionStorage.setItem("accessToken", data.accessToken);
+          sessionStorage.setItem("isLoggedIn",true);
         }
       } else {
         console.log("tried but not");
