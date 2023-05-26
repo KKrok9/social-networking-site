@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "../../../styles/InputPost.module.css";
+import { useState, useEffect } from "react";
 const InputPost = () => {
+  
   return (
     <textarea
       placeholder="What's up?"
