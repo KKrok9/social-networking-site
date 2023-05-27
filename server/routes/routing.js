@@ -11,5 +11,6 @@ router.post("/register", registerController.addUser);
 router.post("/login", loginController.loginUser);
 router.post("/add-post", postController.addPost);
 router.get("/get-users", usersController.getAllUsers);
+router.get("/get-posts", postController.getAllPosts);
 
 module.exports = router;
