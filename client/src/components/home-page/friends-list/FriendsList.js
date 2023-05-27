@@ -2,8 +2,11 @@ import React from "react";
 import Friend from "./friend/Friend";
 import styles from "../../../styles/FriendsList.module.css";
 import { useState, useEffect } from "react";
+import { decodeJWT } from "../../../utils/decode";
+
 const Friendslist = () => {
   const [users, setUsers] = useState([]);
+  const loggedUserData = decodeJWT();
 
   useEffect(() => {
     async function fetchUsers(req, res) {
@@ -16,8 +19,10 @@ const Friendslist = () => {
         });
 
         const data = await response.json();
-        console.log(data);
-        setUsers(data);
+        const filteredData = data.filter((element) => {
+          return element.email !== loggedUserData.email;
+        });
+        setUsers(filteredData);
       } catch (error) {
         console.error("Blad ", error);
       }
@@ -31,7 +36,7 @@ const Friendslist = () => {
       {users.map((element) => {
         return (
           <Friend
-            key={element.id}
+            key={element.email}
             name={element.name}
             surname={element.surname}
           ></Friend>

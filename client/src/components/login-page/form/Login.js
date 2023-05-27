@@ -69,8 +69,6 @@ const Login = (props) => {
   useEffect(() => {
     async function loginUser() {
       if (isFormSubmit && isFormValid) {
-        console.log("valided - cool", isFormValid);
-        console.log("submited - cool", isFormSubmit);
         const response = await fetch("http://localhost:5000/login", {
           method: "POST",
           headers: {
@@ -81,7 +79,6 @@ const Login = (props) => {
 
         const data = await response.json();
         if (data.status === 404) {
-          console.log("didnt find");
         }
         if (data.status === 200) {
           props.toggleIsLoggedIn(true);
@@ -89,7 +86,6 @@ const Login = (props) => {
           sessionStorage.setItem("isLoggedIn",true);
         }
       } else {
-        console.log("tried but not");
       }
     }
     loginUser();

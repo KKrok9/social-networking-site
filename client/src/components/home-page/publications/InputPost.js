@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "../../../styles/InputPost.module.css";
-import { useState, useEffect } from "react";
-const InputPost = () => {
-  
+
+const InputPost = (props) => {
   return (
     <textarea
       placeholder="What's up?"
       className={styles["input-posts"]}
+      value={props.value}
+      onChange={props.onChange}
     ></textarea>
   );
 };
