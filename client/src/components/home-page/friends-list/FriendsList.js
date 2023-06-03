@@ -30,7 +30,7 @@ const Friendslist = () => {
     }
     fetchUsers();
   }, []);
-
+  
   return (
     <div className={styles["friendslist-container"]}>
       {users.map((element) => {
@@ -39,6 +39,7 @@ const Friendslist = () => {
             key={element.email}
             name={element.name}
             surname={element.surname}
+            color={element.profilePicColor}
           ></Friend>
         );
       })}

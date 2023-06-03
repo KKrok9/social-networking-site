@@ -9,11 +9,14 @@ const Posts = (props) => {
         return (
           <Post
             key={element._id}
+            postId = {element._id}
             authorName={element.author.name}
             authorSurname={element.author.surname}
+            authorEmail={element.author.email}
             date={element.dateOfAddition}
             content={element.content}
             likedBy={element.likedBy}
+            getPosts={props.getPosts}
           ></Post>
         );
       })}

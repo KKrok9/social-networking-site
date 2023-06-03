@@ -30,8 +30,13 @@ const year = String(currentDate.getFullYear()).slice(-2);
 
 const formattedDate = `${day}/${month}/${year}`;
 
+
 const Sidebar = (props) => {
   const { name, surname } = props.userData;
+  const logout = () =>{
+    props.toggleIsLoggedIn(false)
+    sessionStorage.setItem('accessToken',' ');
+  }
   return (
     <div className={styles["sidebar-container"]}>
       <div className={styles["sidebar-head--section"]}>
@@ -63,7 +68,7 @@ const Sidebar = (props) => {
           variant="contained"
           sx={buttonStyles}
           endIcon={<LogoutIcon />}
-          onClick={() => props.toggleIsLoggedIn(false)}
+          onClick={logout}
         >
           LOGOUT
         </Button>

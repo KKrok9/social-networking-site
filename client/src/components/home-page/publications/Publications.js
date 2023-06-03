@@ -58,6 +58,7 @@ const Publications = (props) => {
   async function addPost() {
     if (postContent.length > 0) {
       try {
+
         const response = await fetch(
           "http://localhost:5000/add-post",
           {
@@ -78,6 +79,7 @@ const Publications = (props) => {
         const data = await response.json();
         setPostContent("");
         console.log(data);
+    
         getPosts();
       } catch (err) {
         console.error("something went wrong!", err);
@@ -103,7 +105,7 @@ const Publications = (props) => {
         </Button>
       </div>
       <div className={styles["posts-container"]}>
-        <Posts posts={posts}></Posts>
+        <Posts posts={posts} getPosts={getPosts}></Posts>
       </div>
     </div>
   );
