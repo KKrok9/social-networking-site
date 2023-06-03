@@ -26,4 +26,38 @@ exports.getAllPosts = async (req, res) => {
   }
 };
 
+exports.likePost = async (req, res) => {
+  try {
+    const postId = req.body.postId;
+    const userEmail = req.body.email;
+    const post = await Post.findOne({ _id: postId, likedBy: userEmail });
+
+    if (post) {
+      await Post.updateOne(
+        {
+          _id: req.body.postId,
+        },
+        {
+          $pull: { likedBy: userEmail },
+        }
+      );
+      return res.status(201).json({ message: "Usunieto polubienie" });
+    }
+
+    await Post.updateOne(
+      {
+        _id: req.body.postId,
+      },
+      {
+        $push: { likedBy: userEmail },
+      }
+    );
+    return res.status(200).json({ message: "Polubiono" });
+  } catch {
+    res
+      .status(500)
+      .json({ error: "Nie udało się dodać osoby do listy polubień posta" });
+  }
+};
+
 //To show all posts of some user controller (finding by email)
