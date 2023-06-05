@@ -10,21 +10,41 @@ exports.getAllUsers = async (req, res) => {
   }
 };
 
+//endpoint for getting name, surname and profilePicColor.
 exports.getProfilePicColorAndName = async (req, res) => {
+  console.log(req.body);
   try {
-    const  email  = req.body.email;
-    const user = await User.findOne({ email:email });
+    const email = req.body.email;
+    const user = await User.findOne({ email: email });
     if (!user) {
       return res.status(404).json({ error: "Użytkownik nieznaleziony" });
     }
     res.json({
       profilePicColor: user.profilePicColor,
       userName: user.name,
-      userSurname: user.surname
+      userSurname: user.surname,
     });
   } catch (error) {
     res.status(500).json({ error: "Wystąpił błąd" });
   }
 };
 
-//List of users who liked some post
+//User with specific email - to show his profile
+exports.getUserData = async (req, res) => {
+  try {
+    const email = req.body.email;
+    const user = await User.findOne({ email: email });
+    if (!user) {
+      return res.status(404).json({ error: "Użytkownik nieznaleziony" });
+    }
+    res.json({
+      email: user.email,
+      name: user.name,
+      surname: user.surname,
+      profilePicColor: user.profilePicColor,
+      birthdayDate: user.birthdayDate,
+    });
+  } catch (error) {
+    res.status(500).json({ error: "Wystąpił błąd" });
+  }
+};

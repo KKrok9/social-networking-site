@@ -13,5 +13,6 @@ router.post("/get-profile-color", usersController.getProfilePicColorAndName);
 router.get("/get-users", usersController.getAllUsers);
 router.get("/get-posts", postController.getAllPosts);
 router.post("/like-post", postController.likePost);
+router.post("/get-user-data", usersController.getUserData);
 
 module.exports = router;
