@@ -1,0 +1,9 @@
+.posts-container {
+  width: 70%;
+  height: 80%;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0.5, 0, 0.5); /* Dodaj ten wiersz */
+  padding: 5%;
+  opacity: 0.85;
+}

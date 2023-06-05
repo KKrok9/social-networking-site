@@ -1,0 +1,28 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url("../../images/your-profile-bg.jpg");
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.informations-section-container {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.activity-section-container {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

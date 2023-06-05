@@ -5,7 +5,6 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import ForumIcon from "@mui/icons-material/Forum";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Button from "@mui/material/Button";
-
 const buttonStyles = {
   width: "80%",
   height: "8%",
@@ -23,20 +22,21 @@ const buttonStyles = {
   },
 };
 const currentDate = new Date();
-
 const day = String(currentDate.getDate()).padStart(2, "0");
 const month = String(currentDate.getMonth() + 1).padStart(2, "0");
 const year = String(currentDate.getFullYear()).slice(-2);
 
 const formattedDate = `${day}/${month}/${year}`;
 
-
 const Sidebar = (props) => {
   const { name, surname } = props.userData;
-  const logout = () =>{
-    props.toggleIsLoggedIn(false)
-    sessionStorage.setItem('accessToken',' ');
-  }
+  
+  const logout = () => {
+    props.toggleIsLoggedIn(false);
+    sessionStorage.setItem("accessToken", " ");
+  };
+
+
   return (
     <div className={styles["sidebar-container"]}>
       <div className={styles["sidebar-head--section"]}>
@@ -51,6 +51,7 @@ const Sidebar = (props) => {
           variant="contained"
           endIcon={<AccountBoxIcon />}
           sx={buttonStyles}
+          href="/your-profile"
         >
           YOUR PROFILE
         </Button>

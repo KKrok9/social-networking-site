@@ -22,6 +22,7 @@ const HomePage = (props) => {
         <Sidebar
           toggleIsLoggedIn={props.toggleIsLoggedIn}
           userData={userData}
+          handleProfileEmailChange={props.handleProfileEmailChange}
         ></Sidebar>
       </div>
       <div className={styles["publications-container"]}>
