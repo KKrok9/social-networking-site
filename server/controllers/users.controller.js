@@ -12,7 +12,6 @@ exports.getAllUsers = async (req, res) => {
 
 //endpoint for getting name, surname and profilePicColor.
 exports.getProfilePicColorAndName = async (req, res) => {
-  console.log(req.body);
   try {
     const email = req.body.email;
     const user = await User.findOne({ email: email });

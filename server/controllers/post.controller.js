@@ -2,7 +2,6 @@ const Post = require("../models/post.model");
 
 //To add post controller
 exports.addPost = async (req, res) => {
-  console.log(req.body);
   try {
     await Post.create({
       content: req.body.content,
@@ -61,3 +60,13 @@ exports.likePost = async (req, res) => {
 };
 
 //To show all posts of some user controller (finding by email)
+exports.getPostsOfSingleUser = async (req,res)=>{
+  try{
+    const userEmail = req.body.email;
+    const posts = await Post.find({'author.email':userEmail});
+    res.status(200).json(posts);
+  }
+  catch(error){
+    res.status(500).json({error:"blad"});
+  }
+}
