@@ -33,7 +33,8 @@ const Sidebar = (props) => {
 
   const logout = () => {
     props.toggleIsLoggedIn(false);
-    sessionStorage.setItem("accessToken", " ");
+    sessionStorage.removeItem("accessToken");
+    sessionStorage.removeItem("isLoggedIn");
   };
 
   return (
@@ -74,6 +75,7 @@ const Sidebar = (props) => {
           sx={buttonStyles}
           endIcon={<LogoutIcon />}
           onClick={logout}
+          className={styles["sidebar-btn"]}
         >
           LOGOUT
         </Button>

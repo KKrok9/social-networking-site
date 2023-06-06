@@ -22,8 +22,6 @@ const Login = (props) => {
     }));
   }
 
-
-
   const [isFormValid, setIsFormValid] = useState("");
   const [isFormSubmit, setIsFormSubmit] = useState("");
   const [clickCounter, setClickCounter] = useState(0);
@@ -85,12 +83,11 @@ const Login = (props) => {
         if (data.status === 200) {
           props.toggleIsLoggedIn(true);
           sessionStorage.setItem("accessToken", data.accessToken);
-          sessionStorage.setItem("isLoggedIn",true);
+          sessionStorage.setItem("isLoggedIn", true);
         }
       } else {
       }
-    } 
-
+    }
 
     loginUser();
   }, [isFormValid, clickCounter]);
@@ -98,7 +95,11 @@ const Login = (props) => {
   return (
     <div className={styles["login-form__div"]}>
       <form className={styles["login-form"]} onSubmit={handleSubmit}>
-        <h2 className={styles.header2}>Welcome back!</h2>
+        <h2 className={styles.header2}>
+          {loginErrs.emailErr || loginErrs.passwordErr
+            ? "ACCOUNT NOT FOUND!"
+            : "WELCOME BACK!"}
+        </h2>
         <div className={styles["input-label-div"]}>
           <label
             className={styles["login-form__element-label"]}

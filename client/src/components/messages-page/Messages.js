@@ -4,17 +4,17 @@ import NewMessageForm from "./newMessageForm/NewMessageForm";
 import styles from "../../styles/Messages.module.css";
 import { useState, useEffect } from "react";
 import { decodeJWT } from "../../utils/decode";
-
+import { Link } from "react-router-dom";
 const Messages = () => {
   const [messages, setMessages] = useState([]);
   const [selectedMessage, setSelectedMessage] = useState({});
 
-  const handleChangeSelectedMessage = (message) =>{
+  const handleChangeSelectedMessage = (message) => {
     setSelectedMessage(message);
-  }
-  useEffect(()=>{
+  };
+  useEffect(() => {
     console.log(selectedMessage);
-  },[selectedMessage])
+  }, [selectedMessage]);
 
   const [userData, setUserData] = useState(null);
   useEffect(() => {
@@ -46,15 +46,25 @@ const Messages = () => {
 
   return (
     <div className={styles["container"]}>
+      <div className={styles["button-container"]}>
+        <Link to="/home" className={styles["back-button"]}>
+          X
+        </Link>
+      </div>
       <div className={styles["form-container"]}>
         <NewMessageForm getMyMessages={getMyMessages}></NewMessageForm>
       </div>
       <div className={styles["messages-container"]}>
         <div className={styles["messages-list-container"]}>
-          <MessagesList messages={messages} handleChangeSelectedMessage={handleChangeSelectedMessage}></MessagesList>
+          <MessagesList
+            messages={messages}
+            handleChangeSelectedMessage={handleChangeSelectedMessage}
+          ></MessagesList>
         </div>
         <div className={styles["messages-description-container"]}>
-          <MessageDescription selectedMessage={selectedMessage}></MessageDescription>
+          <MessageDescription
+            selectedMessage={selectedMessage}
+          ></MessageDescription>
         </div>
       </div>
     </div>

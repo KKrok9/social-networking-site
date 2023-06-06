@@ -53,3 +53,10 @@
   transform: scale(1.5, 1.5) skewX(-20deg);
   background-image: var(--main-gradient);
 }
+
+@media screen and (max-width: 768px) {
+  .header-outer_div{
+    display: none;
+  }
+  
+}

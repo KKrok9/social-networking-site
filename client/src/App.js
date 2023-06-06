@@ -67,13 +67,29 @@ function App() {
           <Route
             exact
             path="/your-profile"
-            element={<ProfilePage profileData={profileData} />}
+            element={
+              Boolean(isLoggedIn) ? (
+                <ProfilePage profileData={profileData} />
+              ) : (
+                <Navigate to="/" />
+              )
+            }
           ></Route>
-          <Route exact path="/messages" element={<Messages />}></Route>
+          <Route
+            exact
+            path="/messages"
+            element={Boolean(isLoggedIn) ? <Messages /> : <Navigate to="/" />}
+          ></Route>
           <Route
             exact
             path="/friend-profile"
-            element={<ProfilePage profileData={friendProfileData} />}
+            element={
+              Boolean(isLoggedIn) ? (
+                <ProfilePage profileData={friendProfileData} />
+              ) : (
+                <Navigate to="/" />
+              )
+            }
           ></Route>
         </Routes>
       </Router>

@@ -18,3 +18,9 @@
   font-weight: 500;
   letter-spacing: 0.05rem;
 }
+
+@media screen and (max-width: 900px) {
+  .my-paragraph{
+      font-size: 10px;
+  }
+}

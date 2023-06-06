@@ -3,11 +3,12 @@ import ProfileActivity from "./profile-activity/ProfileActivity";
 import ProfileInformations from "./profile-informations/ProfileInformations";
 import styles from "../../styles/ProfilePage.module.css";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const ProfilePage = (props) => {
   const [userData, setUserData] = useState({});
   const profileEmailProps = props.profileData;
-  
+
   useEffect(() => {
     async function getYourProfileData() {
       if (profileEmailProps && profileEmailProps.email) {
@@ -29,15 +30,21 @@ const ProfilePage = (props) => {
       }
     }
     getYourProfileData();
-  },[profileEmailProps]);
+  }, [profileEmailProps]);
 
   return (
     <div className={styles.container}>
+      <div className={styles["button-container"]}>
+        <Link to="/home" className={styles["back-button"]}>
+          X
+        </Link>
+      </div>
+
       <div className={styles["informations-section-container"]}>
         <ProfileInformations userData={userData} />
       </div>
       <div className={styles["activity-section-container"]}>
-        <ProfileActivity userData={userData}/>
+        <ProfileActivity userData={userData} />
       </div>
     </div>
   );

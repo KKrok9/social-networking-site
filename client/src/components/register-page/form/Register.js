@@ -28,6 +28,13 @@ const Register = () => {
     repeatedPasswordErr: "",
   });
 
+  const feedback = {
+    password: "YOUR PASSWORD IS TOO SHORT!",
+    email: "ENTER VALID E-MAIL!",
+    passwordRepeat: "YOUR PASSWORDS AREN'T MATCHING!",
+    date: "YOU ARE TOO YOUNG!",
+  };
+
   const [isSubmit, setIsSubmit] = useState(false);
   const [isValid, setIsValid] = useState(false);
   const [clickCounter, setClickCounter] = useState(0);
@@ -168,7 +175,13 @@ const Register = () => {
           </div>
 
           <div className={styles["register-input--section"]}>
-            <label className={styles["register-label"]}>DATE OF BIRTH</label>
+            <label
+              className={`${styles["register-label"]} ${
+                formErrors.birthdayDateErr ? styles["error-label"] : ""
+              }`}
+            >
+              {formErrors.birthdayDateErr ? feedback.date : "DATE OF BIRTH"}
+            </label>
             <input
               name="birthdayDate"
               value={formData.birthdayDate}
@@ -181,8 +194,12 @@ const Register = () => {
           </div>
 
           <div className={styles["register-input--section"]}>
-            <label className={styles["register-label"]} type="email">
-              E-MAIL
+            <label
+              className={`${styles["register-label"]} ${
+                formErrors.emailErr ? styles["error-label"] : ""
+              }`}
+            >
+              {formErrors.emailErr ? feedback.email : "E-MAIL"}
             </label>
             <input
               name="email"
@@ -195,7 +212,13 @@ const Register = () => {
           </div>
 
           <div className={styles["register-input--section"]}>
-            <label className={styles["register-label"]}>PASSWORD</label>
+            <label
+              className={`${styles["register-label"]} ${
+                formErrors.passwordErr ? styles["error-label"] : ""
+              }`}
+            >
+              {formErrors.passwordErr ? feedback.password : "PASSWORD"}
+            </label>
             <input
               name="password"
               value={formData.password}
@@ -208,7 +231,13 @@ const Register = () => {
           </div>
 
           <div className={styles["register-input--section"]}>
-            <label className={styles["register-label"]}> REPEAT PASSWORD</label>
+          <label
+              className={`${styles["register-label"]} ${
+                formErrors.repeatedPasswordErr && formErrors.passwordErr ? styles["error-label"] : ""
+              }`}
+            >
+              {formErrors.repeatedPasswordErr && formErrors.passwordErr ? feedback.password : formErrors.repeatedPasswordErr ? feedback.passwordRepeat : "REPEAT PASSWORD"}
+            </label>
             <input
               name="repeatedPassword"
               value={formData.repeatedPassword}

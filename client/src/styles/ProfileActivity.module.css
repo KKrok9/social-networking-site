@@ -5,11 +5,20 @@
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 0.5, 0, 0.5);
   padding: 5%;
+  overflow-y: scroll;
 }
 
 .parag{
   font-size: 2rem;
   letter-spacing: 0.1rem;
-  
+}
 
+
+@media screen and (max-width: 768px) {
+  .photo{
+      font-size: 10px;
+  }
+  .parag{
+      font-size: 13px;
+  }
 }

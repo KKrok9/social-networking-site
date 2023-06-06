@@ -110,3 +110,12 @@
   font-weight: bold;
   letter-spacing: 0.1rem;
 }
+@media screen and (max-width: 768px) {
+  .form-section{
+    width: 100vw;
+  }
+  .photo-section{
+    display: none;
+  }
+  
+}

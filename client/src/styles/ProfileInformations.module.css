@@ -59,3 +59,9 @@
     background-color: gainsboro;
     font-size: 20px;
 }
+
+@media screen and (max-width: 768px) {
+    .par{
+        font-size: 13px;
+    }
+}

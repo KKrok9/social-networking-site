@@ -26,3 +26,23 @@
   justify-content: center;
   align-items: center;
 }
+.button-container {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+}
+
+.back-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5); /* Przezroczyste czarne tło */
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: white; /* Kolor tekstu */
+}
+
