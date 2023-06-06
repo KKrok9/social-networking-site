@@ -8,6 +8,7 @@
   border-radius: 12px;
   border: none;
   padding: 1%;
+  resize: none;
 }
 .input-posts:focus {
   outline: none;

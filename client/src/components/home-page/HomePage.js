@@ -22,14 +22,13 @@ const HomePage = (props) => {
         <Sidebar
           toggleIsLoggedIn={props.toggleIsLoggedIn}
           userData={userData}
-          handleProfileEmailChange={props.handleProfileEmailChange}
         ></Sidebar>
       </div>
       <div className={styles["publications-container"]}>
         <Publications></Publications>
       </div>
       <div className={styles["friendslist-container"]}>
-        <Friendslist></Friendslist>
+        <Friendslist handleChangeFriendProfileData={props.handleChangeFriendProfileData} ></Friendslist>
       </div>
     </div>
   );

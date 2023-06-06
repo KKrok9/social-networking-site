@@ -30,12 +30,11 @@ const formattedDate = `${day}/${month}/${year}`;
 
 const Sidebar = (props) => {
   const { name, surname } = props.userData;
-  
+
   const logout = () => {
     props.toggleIsLoggedIn(false);
     sessionStorage.setItem("accessToken", " ");
   };
-
 
   return (
     <div className={styles["sidebar-container"]}>
@@ -55,7 +54,12 @@ const Sidebar = (props) => {
         >
           YOUR PROFILE
         </Button>
-        <Button variant="contained" sx={buttonStyles} endIcon={<ForumIcon />}>
+        <Button
+          variant="contained"
+          sx={buttonStyles}
+          endIcon={<ForumIcon />}
+          href="/messages"
+        >
           MESSAGES
         </Button>
         <Button

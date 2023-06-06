@@ -1,0 +1,49 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 12px;
+  background-image: url("../../images/messages-bg.png");
+  background-size: cover;
+  background-position: center center;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.form-container {
+  width: 80%;
+  height: 35%;
+  box-shadow: 0 0 10px rgba(0, 0.5, 0, 0.5);
+  margin-top: 2%;
+  background-color: whitesmoke;
+  padding: 1%;
+}
+.messages-container {
+  width: 80%;
+  height: 60%;
+  margin: 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.messages-list-container {
+  width: 35%;
+  height: 90%;
+  box-shadow: 0 0 10px rgba(0, 0.5, 0, 0.5);
+  background-color: whitesmoke;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.messages-description-container {
+  width: 50%;
+  height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0.5, 0, 0.5);
+  background-color: whitesmoke;
+}

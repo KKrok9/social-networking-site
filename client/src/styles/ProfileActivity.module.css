@@ -3,7 +3,13 @@
   height: 80%;
   background-color: white;
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0.5, 0, 0.5); /* Dodaj ten wiersz */
+  box-shadow: 0 0 10px rgba(0, 0.5, 0, 0.5);
   padding: 5%;
-  opacity: 0.85;
+}
+
+.parag{
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  
+
 }

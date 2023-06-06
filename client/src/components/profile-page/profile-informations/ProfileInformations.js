@@ -12,7 +12,7 @@ const ProfileInformations = (props) => {
     <div className={styles["container"]}>
       <div className={styles["profile-photo-section"]}>
         <Avatar
-          style={{ backgroundColor: "red", color: "white" }}
+          style={{ backgroundColor: props.userData.profilePicColor, color: "white" }}
           sx={{
             width: 120,
             height: 120,

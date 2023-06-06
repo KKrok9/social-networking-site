@@ -37,7 +37,7 @@ const ProfilePage = (props) => {
         <ProfileInformations userData={userData} />
       </div>
       <div className={styles["activity-section-container"]}>
-        <ProfileActivity />
+        <ProfileActivity userData={userData}/>
       </div>
     </div>
   );

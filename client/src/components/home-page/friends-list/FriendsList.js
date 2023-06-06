@@ -4,7 +4,7 @@ import styles from "../../../styles/FriendsList.module.css";
 import { useState, useEffect } from "react";
 import { decodeJWT } from "../../../utils/decode";
 
-const Friendslist = () => {
+const Friendslist = (props) => {
   const [users, setUsers] = useState([]);
   const loggedUserData = decodeJWT();
 
@@ -37,9 +37,11 @@ const Friendslist = () => {
         return (
           <Friend
             key={element.email}
+            email={element.email}
             name={element.name}
             surname={element.surname}
             color={element.profilePicColor}
+            handleChangeFriendProfileData={props.handleChangeFriendProfileData}
           ></Friend>
         );
       })}
