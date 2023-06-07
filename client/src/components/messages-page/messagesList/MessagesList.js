@@ -5,7 +5,6 @@ const MessagesList = (props) => {
 
   return (
     <div className={styles["container"]}>
-      <h2 className={styles.parag}>Your messages</h2>
       {messages.length === 0 ? (
         <p className={styles.parag}>There's nothing to see</p>
       ) : (
