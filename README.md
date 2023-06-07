@@ -8,9 +8,10 @@
 - NODE.JS
 
 ## DIAGRAM ERD
-<img src="./screenshots/1.png" />
+<img src="./screenshots/ERD.png" />
 
 ## ZRZUTY EKRANU Z APLIKACJI
+<img src="./screenshots/1.png" />
 <img src="./screenshots/2.png" />
 <img src="./screenshots/3.png" />
 <img src="./screenshots/4.png" />
